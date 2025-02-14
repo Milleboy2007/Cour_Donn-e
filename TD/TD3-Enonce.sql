@@ -36,6 +36,14 @@ FROM [dbo].[employees]
 -- La liste sera triée par le salaire
 
 -- Votre code ici
+select 
+	[last_name],
+	[first_name],
+	[salary],
+	[email]
+FROM [dbo].[employees]
+where [salary] >= 4500 
+order by [salary]
 
 
 -- ---------
@@ -45,6 +53,14 @@ FROM [dbo].[employees]
 -- La liste sera triée par le salaire
 --
 -- Votre code ici
+select 
+	[last_name],
+	[first_name],
+	[salary],
+	[email]
+FROM [dbo].[employees]
+where [salary] between 8000 and 13000
+order by [salary]
 
 
 -- ---------
@@ -54,6 +70,15 @@ FROM [dbo].[employees]
 -- La liste sera triée par le salaire
 
 -- Votre code ici
+select 
+	[last_name],
+	[first_name],
+	[salary],
+	[email]
+FROM [dbo].[employees]
+where [salary] < 8000 or [salary] > 10000
+order by [salary]
+
 
 
 -- ----------
@@ -63,6 +88,14 @@ FROM [dbo].[employees]
 -- La liste sera triée par le salaire
 
 -- Votre code ici
+select 
+	[last_name],
+	[first_name],
+	[salary],
+	[email]
+FROM [dbo].[employees]
+where [salary] != 4500
+order by [salary]
 
 
 -- ----------
@@ -76,7 +109,13 @@ FROM [dbo].[employees]
 --- Le courriel
 
 -- Votre code ici
-
+select
+	[last_name] "Nom de famille",
+	[first_name] Prénom,
+	[phone_number] "Numéro de téléphone",
+	[email] Courriel
+FROM [dbo].[employees]
+where  [last_name] = 'Taylor'
 
 
 -- ----------
@@ -85,7 +124,13 @@ FROM [dbo].[employees]
 -- Opérateur LIKE and caractère générique %
 
 -- Votre code ici
-
+select
+	[last_name] "Nom de famille",
+	[first_name] Prénom,
+	[phone_number] "Numéro de téléphone",
+	[email] Courriel
+FROM [dbo].[employees]
+where  [last_name] like 'H%'
 
 
 -- ----------
@@ -95,6 +140,13 @@ FROM [dbo].[employees]
 -- La liste sera triée par le numéro de téléphone
 
 -- Votre code ici
+select
+	[last_name] "Nom de famille",
+	[first_name] Prénom,
+	[phone_number] "Numéro de téléphone",
+	[email] Courriel
+FROM [dbo].[employees]
+where  [phone_number] like '515%'
 
 
 
@@ -105,6 +157,14 @@ FROM [dbo].[employees]
 -- 
 
 -- Votre code ici
+select
+	[last_name] "Nom de famille",
+	[first_name] Prénom,
+	[phone_number] "Numéro de téléphone",
+	[email] Courriel
+FROM [dbo].[employees]
+where  [last_name] between 'C' and 'P' 
+order by [last_name]
 
 
 
@@ -115,6 +175,14 @@ FROM [dbo].[employees]
 -- 
 
 -- Votre code ici
+select
+	[last_name] "Nom de famille",
+	[first_name] Prénom,
+	[phone_number] "Numéro de téléphone",
+	[email] Courriel
+FROM [dbo].[employees]
+where [first_name]  between 'C' and 'P' 
+order by [first_name]
 
 
 
@@ -125,6 +193,14 @@ FROM [dbo].[employees]
 -- 
 
 -- Votre code ici
+select
+	[last_name] "Nom de famille",
+	[first_name] Prénom,
+	[phone_number] "Numéro de téléphone",
+	[email] Courriel
+FROM [dbo].[employees]
+where [last_name]  in('fay','higgins','himuro')
+order by [last_name]
 
 
 
@@ -140,6 +216,14 @@ FROM [dbo].[employees]
 -- 
 
 -- Votre code ici
+SELECT
+	[last_name] Nom,
+	[first_name] Prénom,
+	[email] Mail,
+	[hire_date] "Date d'embauche"
+FROM [dbo].[employees]
+WHERE [hire_date] > '1990-01-01'
+ORDER BY [hire_date]
 
 
 
@@ -155,4 +239,12 @@ FROM [dbo].[employees]
 -- 
 
 -- Votre code ici
+SELECT
+	[last_name] Nom,
+	[first_name] Prénom,
+	[email] Mail,
+	[hire_date] "Date d'embauche"
+FROM [dbo].[employees]
+WHERE [hire_date] BETWEEN '1995-09-10' AND '1998-01-01'
+ORDER BY [hire_date]
 

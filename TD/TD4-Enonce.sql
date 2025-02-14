@@ -21,6 +21,15 @@
 -- •	Poste
 
 -- Votre code ici
+SELECT 
+	[Nom],
+	[Prénom],
+	[Poste occupé],
+	[Date d'embauche],
+	[Téléphone personnel],
+	[Poste]
+FROM [dbo].[Employés]
+WHERE [Poste occupé] = 'représentant'
 
 
 -- Requête 2
@@ -34,6 +43,14 @@
 -- •	Téléphone personnel
 
 -- Votre code ici
+SELECT 
+	[Nom],
+	[Prénom],
+	[Poste occupé],
+	[Date d'embauche],
+	[Téléphone personnel]
+FROM [dbo].[Employés]
+WHERE [Date d'embauche] between '1998-01-01' and '1998-12-31'
 
  
 -- Requête 3
@@ -46,6 +63,13 @@
 -- •	Téléphone personnel
 
 -- Votre code ici
+SELECT 
+	[Nom],
+	[Prénom],
+	[Poste occupé],
+	[Téléphone personnel]
+FROM [dbo].[Employés]
+WHERE [Téléphone personnel] like '206555%'
 
 
 -- Requête 4
@@ -59,11 +83,19 @@
 -- •	Date naissance
 
 -- Votre code ici
+SELECT 
+	[Nom],
+	[Prénom],
+	[Poste occupé],
+	[Date d'embauche],
+	[Date de naissance]
+FROM [dbo].[Employés]
+WHERE [Date de naissance] > '01-01-1979' AND [Date d'embauche] > '01-01-1997'
 
 
 -- Requête 5
 -- Table : Employés
--- Créez une requête qui affiche la liste des employés dont le « Poste occupé » est « directeur commercial » et dont la « date d’embauche » est comprise entre 01-01-198 et 31-12-1998.
+-- Créez une requête qui affiche la liste des employés dont le « Poste occupé » est « directeur commercial » et dont la « date d’embauche » est comprise entre 01-01-1998 et 31-12-1998.
 -- Les colonnes à afficher sont : 
 -- •	Nom
 -- •	Prénom
@@ -71,6 +103,13 @@
 -- •	Date d’embauche
 
 -- Votre code ici
+SELECT 
+	[Nom],
+	[Prénom],
+	[Poste occupé],
+	[Date d'embauche]
+FROM [dbo].[Employés]
+WHERE [Poste occupé] = 'directeur commercial' AND [Date d'embauche] BETWEEN '01-01-1998' AND '12-31-1998'
 
  
 -- Requête 6
@@ -83,6 +122,13 @@
 -- •	En cas d'urgence - Lien de parenté
 
 -- Votre code ici
+SELECT 
+	[Nom],
+	[Prénom],
+	[Poste occupé],
+	[En cas d'urgence - Lien de parenté]
+FROM [dbo].[Employés]
+WHERE [En cas d'urgence - Lien de parenté] = 'epouse'
 
 
 -- Requête 7
@@ -95,6 +141,13 @@
 -- •	Poste occupé
 
 -- Votre code ici
+SELECT
+	[Nom du client],
+	[Nom du contact],
+	[Prénom du contact],
+	[Poste occupé]
+FROM [dbo].[Clients]
+WHERE [Poste occupé] like '%vente%'
 
 
 -- Requête 8
@@ -107,6 +160,13 @@
 -- •	Pays
 
 -- Votre code ici
+SELECT
+	[Nom du client],
+	[Nom du contact],
+	[Prénom du contact],
+	[Pays]
+FROM [dbo].[Clients]
+WHERE [Pays] IN('France', 'Italie', 'Canada')
 
 
 -- Requête 9
@@ -121,6 +181,15 @@
 -- •	Ville
 
 -- Votre code ici
+SELECT
+	[Nom du client],
+	[Nom du contact],
+	[Prénom du contact],
+	[Pays],
+	[Région],
+	[Ville]
+FROM [dbo].[Clients]
+WHERE ([Pays] = 'France' AND [Région] = 'Nord Pas-de-Calais') OR ([Pays] Like 'Etats-Unis%' AND [Ville] = 'Kingston')
 
 
 -- Requête 10
@@ -134,6 +203,14 @@
 -- •	Code postal
 
 -- Votre code ici
+SELECT
+	[Nom du client],
+	[Nom du contact],
+	[Prénom du contact],
+	[Pays],
+	[Code postal]
+FROM [dbo].[Clients]
+WHERE [Code postal] is NULL
 
 
 -- Requête 11
@@ -147,6 +224,16 @@
 -- •	Code postal
 
 -- Votre code ici
+SELECT
+	[Nom du client],
+	[Nom du contact],
+	[Prénom du contact],
+	[Pays],
+	[Code postal],
+	[Ventes de l'année dernière]
+FROM [dbo].[Clients]
+WHERE [Pays] IN('France', 'Allemagne', 'Italie') AND [Ventes de l'année dernière] BETWEEN 10000 AND 60000
+ORDER BY [Ventes de l'année dernière]
 
  
 -- Requête 12
@@ -160,6 +247,14 @@
 -- •	Quantité
 
 -- Votre code ici
+SELECT 
+	[ID commande],
+	[ID produit],
+	[Prix unitaire],
+	[Quantité]
+FROM [dbo].[Détails des commandes]
+WHERE [ID commande] in('1002', '1012', '1832')
+ORDER BY [ID commande]
 
 
 -- Requête 13
@@ -172,3 +267,9 @@
 -- •	Prix Total
 
 -- Votre code ici
+SELECT
+	[ID commande],
+	[Prix unitaire],
+	[Quantité],
+	[Quantité] * [Prix unitaire] AS "Prix Total"
+FROM [dbo].[Détails des commandes]
