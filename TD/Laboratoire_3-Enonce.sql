@@ -106,7 +106,18 @@ WHERE A.employee_id = B.employee_id
 -- Jointure : departments.departement_id = employees.departement_id
 
 -- Votre code ici
-
+SELECT 
+	[department_name],
+	[last_name],
+	[first_name],
+	[hire_date],
+	[salary]
+FROM 
+	[dbo].[departments] A,
+	[dbo].[employees] B
+WHERE 
+	A.department_id = B.department_id
+ORDER BY 1, 2
 
 -- ---------
 -- Requête 4
@@ -128,8 +139,17 @@ WHERE A.employee_id = B.employee_id
 -- Jointure : locations.location_id = departments.location_id
 
 -- Votre code ici
-
-
+SELECT 
+	[department_name],
+	[street_address],
+	[state_province],
+	[city]
+FROM 
+	[dbo].[departments] B,
+	[dbo].[locations] A
+WHERE 
+	A.location_id = B.location_id
+ORDER BY 1
 -- ----------
 -- Requête 5
 -- Modifier la requête précédente en rajoutant le poste occupé par l'employé
@@ -153,3 +173,16 @@ WHERE A.employee_id = B.employee_id
 -- Jointure : jobs.job_id = employees.job.id
 
 -- Votre code ici
+SELECT
+	[department_name],
+	[last_name],
+	[first_name],
+	[hire_date],
+	[salary],
+	[job_title]
+FROM 
+	[dbo].[departments] A,
+	[dbo].[employees] B,
+	[dbo].[jobs] C
+WHERE A.department_id = B.department_id AND C.job_id = B.job_id
+ORDER BY 1,2
