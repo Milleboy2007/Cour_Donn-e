@@ -229,14 +229,14 @@ Commentaire :
 -- # Votre code ici
 SELECT
 	[store_name] AS 'Nom Boutique'
-	,SUM([list_price]) AS Chiffre
+	,SUM([list_price]*[quantity]-[list_price]*[quantity]*[discount]) AS Chiffre
 FROM 
 	[sales].[stores] A,
 	[sales].[order_items] B
 GROUP BY 
 	[store_name]
 ORDER BY
-	SUM([list_price]) DESC
+	SUM([list_price]*[quantity]-[list_price]*[quantity]*[discount]) DESC
 
 /*************************************************************************************
 # Requête 8 : /4pts

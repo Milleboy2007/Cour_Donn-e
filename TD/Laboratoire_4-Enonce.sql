@@ -193,6 +193,38 @@ SELECT
 -- fonctions CAST et CONVERT
 
 -- Votre code ici
+SELECT 
+
+    --Mois--
+	/*GETDATE()
+	,FORMAT(GETDATE(),'MMMM','en-US')
+	,FORMAT(GETDATE(),'MMMM','fr-CA')
+	,FORMAT(GETDATE(),'MMMM','es-es')*/
+
+	--Numérique--
+	/*FORMAT(1234.5678,'N','en-US')
+	,FORMAT(1234.5678,'N','fr-CA')
+	,FORMAT(1234.5678,'N','es-es')
+	,FORMAT(1234.5678,'N','fr-FR')*/
+
+	--Currenci (Money)--
+	/*FORMAT(1234.5678,'C','en-US')
+	,FORMAT(1234.5678,'C','fr-CA')
+	,FORMAT(1234.5678,'C','es-es')
+	,FORMAT(1234.5678,'C','fr-FR')*/
+
+	--CAST--
+	/*CAST(GETDATE() AS date)
+	,CAST(12345.6789 AS int)
+	,CAST(12345 AS decimal(7, 2))*/
+
+	--CONVERT--
+	CONVERT(date,GETDATE())
+	,CONVERT(int, 12345.6789)
+	,CONVERT(decimal(7,2),12345)
+
+
+
 
 
 -- ----------
@@ -336,3 +368,37 @@ GROUP BY
 	A.[ID client], 
 	A.[Nom du client]
 HAVING SUM([Montant commande]) > 5000
+
+
+
+
+
+
+
+
+--Requête 16--
+SELECT
+	[Nom du client]
+	,[Titre]
+	,CASE 
+			WHEN [Titre] = 'M.' THEN 'M' 
+			WHEN [Titre] IN ('Melle','Mme') THEN 'F' 
+		ELSE 'Autre' 
+		END Genre
+	,[Poste occupé]
+	,CASE 
+			WHEN [Poste occupé] LIKE ('%vente%') OR [Poste occupé] LIKE('Représentant') THEN 'Département des ventes' 
+			WHEN [Poste occupé] IN ('Associé','Propriétaire') THEN 'Direction générale' 
+		ELSE 'Autre Département' 
+		END Département
+	,CASE 
+			WHEN [Ventes de l'année dernière] <= 50000 THEN '5%' 
+			WHEN [Ventes de l'année dernière] BETWEEN 100000 AND 30000 THEN '7%'
+			WHEN [Ventes de l'année dernière] > 300000 THEN '15%'
+		END Remise
+	,[Ventes de l'année dernière]
+	
+	,[Pays]
+
+FROM [dbo].[Clients]
+ORDER BY Département
