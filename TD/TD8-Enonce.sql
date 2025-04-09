@@ -199,7 +199,7 @@ ORDER BY
 -- Votre code ici
 SELECT
 	[Name]
-	,CONCAT(A.[LastName],' ', A.[FirstName]) AS NomEnseignant
+	,CONCAT(I.[LastName],' ', I.[FirstName]) AS NomEnseignant
 	,[Title]
 	,CONCAT(A.[LastName],' ', A.[FirstName]) AS 'Nom Élève'
 	,[Grade]
@@ -208,20 +208,47 @@ FROM
 	[dbo].[Department] B,
 	[dbo].[StudentGrade] C,
 	[dbo].[Course] D
-	--,[dbo].[CourseInstructor] E
+	,[dbo].[CourseInstructor] E
+	,[dbo].[Person] I
 WHERE
 	C.StudentID = A.PersonID AND
 	B.DepartmentID = D.DepartmentID AND
 	D.CourseID = C.CourseID AND
+			E.CourseID = D.CourseID AND
+			I.PersonID = E.PersonID AND
 	--C.StudentID = E.PersonID AND
-	[Grade] IS NOT NULL
+	C.[Grade] IS NOT NULL
 --HAVING
 	--NomEnseignant NOT LIKE([StudentID])
 ORDER BY
-	[Name]
+	I.LastName
 
 
 
+
+		SELECT 
+			P.LastName NomEtudiant,
+			P.FirstName PrenomEtudiant,
+			P.Discriminator Statut,
+			SG.Grade Note,
+			C.Title Cours,
+			D.Name Departement,
+			I.LastName NomInstructeur,
+			I.FirstName PrenomInstructeur
+		FROM 
+			Person P,
+			StudentGrade SG,
+			Course C,
+			Department D,
+			CourseInstructor CI,
+			Person I
+		WHERE
+			P.PersonID = SG.StudentID AND 
+			SG.CourseID = C.CourseID AND
+			C.DepartmentID = D.DepartmentID AND
+			CI.CourseID = C.CourseID AND
+			I.PersonID = CI.PersonID AND 
+			SG.Grade IS NOT NULL;
 /**************************************************************************************************************************************
 -- Requête 8-1
 --------------
@@ -300,7 +327,17 @@ On affichera les colonnes :
 **************************************************************************************************************************************/
 -- Votre code ici
 
-
+		SELECT 
+			D.Name Department
+			,COUNT(*) AS TotalCourses
+		FROM 
+			Course C,
+			Department D
+		WHERE 
+			C.DepartmentID = D.DepartmentID AND
+			Credits >= 3
+		GROUP BY D.Name
+		HAVING COUNT(*) >= 2;
 
 /**************************************************************************************************************************************
 -- Requête 13
@@ -313,6 +350,19 @@ On affichera les colonnes :
 **************************************************************************************************************************************/
 -- Votre code ici
 
+		SELECT 
+			 CONCAT(P.LastName, ' ', P.FirstName) NomPrenom
+			,AVG(Grade) AS AverageGrade
+			,COUNT([CourseID]) AS TotalCourses
+		FROM 
+			StudentGrade SG,
+			Person P
+		WHERE 
+			P.PersonID = SG.StudentID AND
+			Grade IS NOT NULL AND
+			P.Discriminator = 'student'
+		GROUP BY CONCAT(P.LastName, ' ', P.FirstName)
+		HAVING AVG(Grade) > 3.5 AND COUNT(*) >= 2;
 
 
 /*************************************************************************************************************************************
@@ -328,6 +378,23 @@ On afichera les colonnes :
 *************************************************************************************************************************************/
 -- Votre code ici
 
+SELECT 
+			CONCAT(P.LastName, ' ', P.FirstName) Etudiant
+			,COUNT(C.CourseID) NbCours
+			,SUM(C.Credits) TotalCredit
+			,AVG(SG.Grade) MoyenneEtudiant
+		FROM 
+			Person P,
+			StudentGrade SG,
+			Course C
+		WHERE
+			P.PersonID = SG.StudentID AND
+			C.CourseID = SG.CourseID AND
+			SG.Grade > 2.0
+		GROUP BY 
+			CONCAT(P.LastName, ' ', P.FirstName)
+		HAVING COUNT(C.CourseID) > 1
+		ORDER BY 1;
 
 
 /**********************************************************************************************************************************
