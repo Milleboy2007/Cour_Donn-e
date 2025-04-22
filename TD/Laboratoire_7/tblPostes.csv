@@ -1,0 +1,22 @@
+No_Poste;Fonction;Grade;Categorie;Taux_horaire;Salaire_annuel
+AC02;Assistant-comptable;MP2;N;37;73125
+AS01;Assembleur;MP1;N;21;40950
+AS02;Assembleur;MP2;N;22;42900
+CM02;Contremaître;MP2;N;39;76050
+CO01;Commis;MP1;N;22;43875
+CO02;Commis;MP2;N;23;44850
+CP03;Comptable;MP3;N;45;89212
+DR04;Directeur;MP4;N;65;126750
+GT03;Gestionnaire;MP3;N;55;107250
+GT04;Gestionnaire;MP4;N;60;117000
+MC01;Mécanicien;MP1;N;22;43875
+MC02;Mécanicien en chef;MP2;N;40;78000
+MN01;Manutentionnaire;MP1;N;22;42900
+PR01;Préposé;MP1;N;21;41437
+PS01;Pressier;MP1;N;22;43485
+PS02;Pressier;MP2;N;23;44850
+RP01;Représentant;SYN;S;20;39000
+RP02;Représentant;SYN;S;21;40950
+RP03;Représentant;SYN;S;22;42900
+RP04;Représentant;SYN;S;22;43875
+RP05;Représentant;SYN;S;24;46800
