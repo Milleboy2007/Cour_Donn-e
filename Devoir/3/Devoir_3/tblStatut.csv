@@ -1,0 +1,4 @@
+CodeStatut;Statut;Description
+A;Actif;L'employé est en poste
+I;Inactif;L'employé n'est pas en poste
+T;Terminé;L'employé a quitté l'entreprise
