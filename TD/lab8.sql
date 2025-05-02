@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> eb62407bde782280afe50ac50b5bdadf5d4a68dc
 USE lab8
 GO
 
@@ -12,7 +16,11 @@ CREATE TABLE tblVendeurs(
 	VILLE nvarchar(20),
 	SALAIRE	money,
 	DateEmbauche date
+<<<<<<< HEAD
 );
+=======
+)
+>>>>>>> eb62407bde782280afe50ac50b5bdadf5d4a68dc
 
 CREATE TABLE tblProjets(
 	IDPROJET tinyint primary key not null,
@@ -25,7 +33,11 @@ CREATE TABLE tblProjets(
 	MONTANT	money,
 	APPROUVE bit
 
+<<<<<<< HEAD
 );
+=======
+)
+>>>>>>> eb62407bde782280afe50ac50b5bdadf5d4a68dc
 
 DROP TABLE IF EXISTS tblPoste
 DROP TABLE IF EXISTS tblEmployeurs
@@ -39,7 +51,11 @@ CREATE TABLE tblEmployeurs (
 	VilleEmp nvarchar(10),
 	ProvEmp	nvarchar(2),
 	TélEmp nvarchar(12),
+<<<<<<< HEAD
 );
+=======
+)
+>>>>>>> eb62407bde782280afe50ac50b5bdadf5d4a68dc
 
 CREATE TABLE tblPoste (
 	Intitulé nvarchar(50),
@@ -48,13 +64,18 @@ CREATE TABLE tblPoste (
 	Préférence tinyInt,
 	NoPoste	tinyInt primary key not null,
 	NoEmployeur	tinyInt foreign key references tblEmployeurs(NoEmployeur)
+<<<<<<< HEAD
 );
+=======
+)
+>>>>>>> eb62407bde782280afe50ac50b5bdadf5d4a68dc
 
 
 DROP TABLE IF EXISTS tblTypeDeLogement
 DROP TABLE IF EXISTS tblPropriete
 DROP TABLE IF EXISTS tblAgent
 DROP TABLE IF EXISTS tblAgence
+<<<<<<< HEAD
 GO
 
 CREATE TABLE tblAgence (
@@ -90,3 +111,6 @@ CREATE TABLE tblTypeDeLogement(
 	IDType tinyInt primary key not null,
 	Type nvarchar(10)
 );
+=======
+GO
+>>>>>>> eb62407bde782280afe50ac50b5bdadf5d4a68dc
